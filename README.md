@@ -1,5 +1,12 @@
 # MicroServicesCourse
 
+### Skaffold
+
+To use skaffold in dev (sync containers and code):
+```bash
+skaffold dev
+```
+
 ### Obs
 
 - To rollout a deployment use:
