@@ -1,8 +1,6 @@
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
-import request from 'supertest';
 import jwt from 'jsonwebtoken'
-import { app } from '../app';
 
 let mongo: any;
 
@@ -36,7 +34,7 @@ afterAll(async () => {
 
 global.signin = () => {
   const payload = {
-    id: '1lk24j124l',
+    id: new mongoose.Types.ObjectId().toHexString(),
     email: 'test@test.com'
   }
 
