@@ -18,8 +18,15 @@ export class OrderCreatedListener extends Listener<OrderCreatedEvent> {
     ticket.set({ orderId: data.id });
 
     await ticket.save();
-    new TicketUpdatedPublisher(this.client);
-    
+    await new TicketUpdatedPublisher(this.client).publish({
+      id: ticket.id,
+      version: ticket.version,
+      orderId: ticket.orderId,
+      title: ticket.title,
+      price: ticket.price,
+      userId: ticket.userId,
+    });
+
     msg.ack();
   }
 }
